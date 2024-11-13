@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<!-- Maven项目对象模型 (POM) 文件定义项目的基本信息、依赖关系和构建配置 -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- POM文件模型的版本 -->
     <modelVersion>4.0.0</modelVersion>
+
+    <!-- Spring Boot 父 POM 配置，提供 Spring Boot 的基础依赖管理和插件 -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.3.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/> <!-- 从仓库中查找父 POM -->
     </parent>
-    <groupId>com.example</groupId>
-    <artifactId>springboot-template</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-template</name>
-    <description>springboot-template</description>
-    <url/>
+
+    <!-- 项目基本信息 -->
+    <groupId>com.zephyr</groupId> <!-- 项目组 ID -->
+    <artifactId>springboot-template</artifactId> <!-- 项目 Artifact ID -->
+    <version>0.0.1-SNAPSHOT</version> <!-- 项目版本号 -->
+    <name>springboot-template</name> <!-- 项目名称 -->
+    <description>springboot-template</description> <!-- 项目描述 -->
+
+    <!-- 项目元数据（可选） -->
+    <url/> <!-- 项目 URL -->
     <licenses>
         <license/>
     </licenses>
@@ -26,45 +36,94 @@
         <tag/>
         <url/>
     </scm>
+
+    <!-- 项目属性配置 -->
     <properties>
-        <java.version>17</java.version>
+        <java.version>17</java.version> <!-- Java版本，指定项目使用的Java版本 -->
     </properties>
+
+    <!-- 项目依赖 -->
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+        <!-- Spring Boot Web Starter，用于构建 Web 应用程序 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- Spring Boot Security Starter，用于应用的安全管理 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <!-- Lombok，简化 Java 类的开发（如生成 getter、setter 方法） -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <optional>true</optional> <!-- 将 Lombok 标记为可选依赖，不会被其他项目继承 -->
         </dependency>
+
+        <!-- Spring Boot 测试 Starter，提供 JUnit 和 Mock 等测试工具 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <scope>test</scope> <!-- 指定该依赖仅在测试范围内生效 -->
         </dependency>
+
+        <!-- Spring Security 测试支持 -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
-            <scope>test</scope>
+            <scope>test</scope> <!-- 仅在测试时使用 -->
+        </dependency>
+
+        <!-- Spring Boot JDBC Starter，用于数据库连接管理 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
+        <!-- MySQL 连接驱动，用于连接 MySQL 数据库 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope> <!-- 运行时加载驱动，减少打包体积 -->
+            <version>8.0.33</version>
+        </dependency>
+
+        <!-- MyBatis-Plus 注解支持 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-annotation</artifactId>
+            <version>3.5.3.2</version>
+        </dependency>
+
+        <!-- MyBatis-Plus Spring Boot Starter，提供MyBatis-Plus核心功能和与Spring Boot的集成支持 -->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.5.3.2</version>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.21</version>
         </dependency>
     </dependencies>
 
+    <!-- 构建配置 -->
     <build>
         <plugins>
+            <!-- Spring Boot Maven 插件，用于打包 Spring Boot 应用为可执行的 JAR 文件 -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <!-- 排除 Lombok 依赖，因为 Lombok 仅在编译期需要，不在运行时需要 -->
                     <excludes>
                         <exclude>
-                            <groupId>org.projectlombok</groupId>
+                            <groupId>org.project-lombok</groupId>
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
