@@ -1,0 +1,22 @@
+server:
+  port: 8101
+spring:
+  # 数据库配置
+  datasource:
+    # 数据库驱动的类名，MySQL 8 及以上版本使用 com.mysql.cj.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 数据库连接 URL，指定了数据库地址、端口和数据库名
+    url: jdbc:mysql://localhost:3306/my_prod_db
+    # 数据库用户名，用于连接数据库
+    username: root
+    # 数据库密码，用于连接数据库（密码必须包含大小写字母、数字和特殊字符，并且长度不低于 8 位）
+    password: Complex@135
+  # SQL 文件初始化配置
+  sql:
+    init:
+      # schema.sql 文件位置，定义数据库表结构的 SQL 文件
+      schema-locations: classpath:sql/schema.sql
+      # SQL 初始化模式
+      # always 表示每次应用启动时都加载 SQL 文件
+      # embedded 表示只在嵌入式数据库（如 H2）时才加载 SQL 文件
+      mode: always

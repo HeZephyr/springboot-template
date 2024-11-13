@@ -1,0 +1,13 @@
+spring:
+  application:
+    # 应用程序名称，用于标识服务，通常在日志和监控中使用
+    name: springboot-template
+  # 激活的环境配置文件
+  profiles:
+    # 指定默认的激活环境为 dev（开发环境）
+    active: dev
+  # 安全配置
+  security:
+    user:
+      name: admin       # 自定义用户名
+      password: admin123 # 自定义密码
