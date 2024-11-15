@@ -95,14 +95,14 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-annotation</artifactId>
-            <version>3.5.3.2</version>
+            <version>3.5.5</version>
         </dependency>
 
         <!-- MyBatis-Plus Spring Boot Starter，提供MyBatis-Plus核心功能和与Spring Boot的集成支持 -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.5.3.2</version>
+            <version>3.5.5</version>
         </dependency>
 
         <dependency>

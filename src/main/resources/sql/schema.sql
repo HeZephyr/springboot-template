@@ -1,8 +1,12 @@
--- 创建数据库
-create database if not exists my_test_db;
+-- 必须先要有数据库 my_test_db
 
 -- 切换数据库
 use my_test_db;
+
+drop table if exists user;
+drop table if exists post;
+drop table if exists post_like;
+drop table if exists post_collection;
 
 -- 用户表
 create table if not exists user
@@ -29,8 +33,8 @@ create table if not exists post
     title      varchar(512)                       null comment '标题',
     content    text                               null comment '内容',
     tags       varchar(1024)                      null comment '标签列表（json 数组）',
-    thumbNum   int      default 0                 not null comment '点赞数',
-    favourNum  int      default 0                 not null comment '收藏数',
+    likeCount   int      default 0                not null comment '点赞数',
+    collectCount  int      default 0              not null comment '收藏数',
     userId     bigint                             not null comment '创建用户 id',
     createTime datetime default CURRENT_TIMESTAMP not null comment '创建时间',
     updateTime datetime default CURRENT_TIMESTAMP not null on update CURRENT_TIMESTAMP comment '更新时间',

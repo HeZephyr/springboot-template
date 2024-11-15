@@ -15,9 +15,9 @@ spring:
   sql:
     init:
       # schema.sql 文件位置，定义数据库表结构的 SQL 文件
-      schema-locations: classpath*:sql/schema.sql
+      schema-locations: classpath:sql/schema.sql
       # data.sql 文件位置，插入初始数据的 SQL 文件
-      data-locations: classpath*:sql/data.sql
+      data-locations: classpath:sql/data.sql
       # SQL 初始化模式
       # always 表示每次应用启动时都加载 SQL 文件
       # embedded 表示只在嵌入式数据库（如 H2）时才加载 SQL 文件
