@@ -17,4 +17,15 @@
         createTime, updateTime
     </sql>
 
+    <select id="listCollectionPostByPage"
+            resultType="com.zephyr.springboottemplate.model.entity.Post">
+        SELECT p.*
+        FROM post p
+        WHERE EXISTS (
+            SELECT 1
+            FROM post_collection pc
+            WHERE pc.userId = #{collectedUserId} AND pc.postId = p.id
+        )
+        ${ew.customSqlSegment}
+    </select>
 </mapper>

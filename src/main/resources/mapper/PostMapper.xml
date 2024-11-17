@@ -23,6 +23,7 @@
         createTime, updateTime, isDelete
     </sql>
 
+    <!-- 查询帖子列表，包括已删除数据 -->
     <select id="listPostWithDelete" resultType="com.zephyr.springboottemplate.model.entity.Post">
         select *
         from post

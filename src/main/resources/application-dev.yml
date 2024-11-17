@@ -1,5 +1,12 @@
 server:
+  address: 0.0.0.0
   port: 8101
+  servlet:
+    context-path: /api
+    # cookie 30 天过期
+    session:
+      cookie:
+        max-age: 2592000
 spring:
   # 数据库配置
   datasource:
@@ -25,3 +32,27 @@ spring:
       platform: mysql
       username: root
       password: Complex@135
+mybatis-plus:
+  configuration:
+    # 是否将数据库字段的下划线命名风格自动映射为驼峰命名法
+    # 例如：数据库字段 `user_name` 会映射为实体类中的 `userName` 属性
+    # 设置为 false 则不会自动转换，需要手动映射字段
+    map-underscore-to-camel-case: false
+
+    # 配置 MyBatis 日志实现类，用于输出执行的 SQL 和调试信息
+    # 使用 `org.apache.ibatis.logging.stdout.StdOutImpl` 将日志输出到控制台
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+  global-config:
+    db-config:
+      # 全局逻辑删除字段名称（对应实体类中的字段名）
+      # 例如：在实体类中设置 `private Integer isDelete`，MyBatis-Plus 会使用该字段来标记逻辑删除
+      logic-delete-field: isDelete
+
+      # 标记逻辑删除的数据的值（默认为 1 表示已删除）
+      # 当执行删除操作时，SQL 中会自动将逻辑删除字段的值更新为此配置值，而不是直接物理删除记录
+      logic-delete-value: 1
+
+      # 标记逻辑未删除的数据的值（默认为 0 表示未删除）
+      # 当查询时，SQL 会自动过滤出逻辑未删除的数据（即逻辑删除字段的值等于该配置值的数据）
+      logic-not-delete-value: 0
