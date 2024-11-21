@@ -15,6 +15,7 @@ import com.zephyr.springboottemplate.model.vo.LoginUserVO;
 import com.zephyr.springboottemplate.model.vo.UserVO;
 import com.zephyr.springboottemplate.service.UserService;
 import com.zephyr.springboottemplate.utils.ThrowUtils;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -35,6 +36,7 @@ import static com.zephyr.springboottemplate.service.impl.UserServiceImpl.SALT;
 @RestController
 @RequestMapping("/user")
 @Slf4j
+@Tag(name = "用户管理", description = "用户管理相关接口")
 public class UserController {
     @Resource
     private UserService userService;
@@ -160,7 +162,7 @@ public class UserController {
     }
 
     @GetMapping("get/vo")
-    public BaseResponse<UserVO> getUserVOById(long id, HttpServletRequest request) {
+    public BaseResponse<UserVO> getUserVOById(long id) {
         BaseResponse<User> userResponse = getUserById(id);
         User user = userResponse.getData();
         UserVO userVO = userService.getUserVO(user);

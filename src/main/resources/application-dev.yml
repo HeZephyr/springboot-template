@@ -1,12 +1,6 @@
 server:
   address: 0.0.0.0
   port: 8101
-  servlet:
-    context-path: /api
-    # cookie 30 天过期
-    session:
-      cookie:
-        max-age: 2592000
 spring:
   # 数据库配置
   datasource:
@@ -15,9 +9,9 @@ spring:
     # 数据库连接 URL，指定了数据库地址、端口和数据库名
     url: jdbc:mysql://localhost:3306/my_test_db
     # 数据库用户名，用于连接数据库
-    username: root
+    username: zephyr
     # 数据库密码，用于连接数据库（密码必须包含大小写字母、数字和特殊字符，并且长度不低于 8 位）
-    password: Complex@135
+    password: hzf,,0701
   # SQL 文件初始化配置
   sql:
     init:
@@ -30,8 +24,8 @@ spring:
       # embedded 表示只在嵌入式数据库（如 H2）时才加载 SQL 文件
       mode: always
       platform: mysql
-      username: root
-      password: Complex@135
+      username: zephyr
+      password: hzf,,0701
 mybatis-plus:
   configuration:
     # 是否将数据库字段的下划线命名风格自动映射为驼峰命名法

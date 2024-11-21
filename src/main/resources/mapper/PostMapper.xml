@@ -12,9 +12,9 @@
         <result property="likeCount" column="likeCount" jdbcType="BIGINT"/>
         <result property="collectCount" column="collectCount" jdbcType="BIGINT"/>
         <result property="userId" column="userId" jdbcType="BIGINT"/>
-        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
-        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
-        <result property="isDelete" column="is_delete" jdbcType="TINYINT"/>
+        <result property="createTime" column="createTime" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="updateTime" jdbcType="TIMESTAMP"/>
+        <result property="isDelete" column="isDelete" jdbcType="TINYINT"/>
     </resultMap>
 
     <sql id="BaseColumnList">

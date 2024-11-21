@@ -54,7 +54,7 @@ public class Post implements Serializable {
      * 是否删除
      */
     @TableLogic // 标识该字段为逻辑删除字段，即不会真正删除数据，而是通过标记删除状态来实现删除
-    private Boolean isDeleted;
+    private Boolean isDelete;
     @Serial
     @TableField(exist = false) // 标识该字段不对应数据库中的列
     private static final long serialVersionUID = 1L;

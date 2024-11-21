@@ -1,3 +1,10 @@
+server:
+  servlet:
+    context-path: /api
+    # cookie 30 天过期
+    session:
+      cookie:
+        max-age: 2592000
 spring:
   application:
     # 应用程序名称，用于标识服务，通常在日志和监控中使用
@@ -11,3 +18,13 @@ spring:
     user:
       name: admin       # 自定义用户名
       password: admin123 # 自定义密码
+springdoc:
+  api-docs:
+    enabled: true  # 启用 OpenAPI 文档生成
+  swagger-ui:
+    enabled: true  # 启用 Swagger UI 界面
+    path: /swagger-ui.html  # Swagger UI 页面路径
+  group-configs:
+    - group: default  # 分组名称
+      paths-to-match: /**  # 匹配的接口路径，注意这里是相对于 context-path 的路径
+      packages-to-scan: com.zephyr.springboottemplate.controller  # 扫描的包路径
