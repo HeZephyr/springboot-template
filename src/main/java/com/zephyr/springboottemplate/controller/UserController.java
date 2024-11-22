@@ -15,6 +15,7 @@ import com.zephyr.springboottemplate.model.vo.LoginUserVO;
 import com.zephyr.springboottemplate.model.vo.UserVO;
 import com.zephyr.springboottemplate.service.UserService;
 import com.zephyr.springboottemplate.utils.ThrowUtils;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
@@ -45,6 +46,7 @@ public class UserController {
     private WxOpenConfig wxOpenConfig;
 
     @PostMapping("/register")
+    @Operation(summary = "用户注册", description = "用户通过账号、密码和确认密码进行注册")
     public BaseResponse<Long> userRegister(@RequestBody UserRegisterRequest userRegisterRequest) {
         if (userRegisterRequest == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
@@ -60,6 +62,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
+    @Operation(summary = "用户登录", description = "通过账号和密码登录系统，返回用户信息")
     public BaseResponse<LoginUserVO> userLogin(@RequestBody UserLoginRequest userLoginRequest, HttpServletRequest request) {
         if (userLoginRequest == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
@@ -74,6 +77,7 @@ public class UserController {
     }
 
     @PostMapping("/loginByWxOpen")
+    @Operation(summary = "微信登录", description = "通过微信登录，返回用户信息")
     public BaseResponse<LoginUserVO> userLoginByWxOpen(HttpServletRequest request, HttpServletResponse response,
                                                        @RequestParam("code") String code) {
         WxOAuth2AccessToken accessToken;
@@ -95,6 +99,7 @@ public class UserController {
     }
 
     @PostMapping("/logout")
+    @Operation(summary = "用户登出", description = "用户登出系统")
     public BaseResponse<Boolean> userLogout(HttpServletRequest request) {
         if (request == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
@@ -104,6 +109,7 @@ public class UserController {
     }
 
     @GetMapping("get/loginUser")
+    @Operation(summary = "获取登录用户", description = "获取当前登录用户信息")
     public BaseResponse<LoginUserVO> getLoginUser(HttpServletRequest request) {
         User user = userService.getLoginUser(request);
         LoginUserVO loginUserVO = userService.getLoginUserVO(user);
@@ -111,6 +117,7 @@ public class UserController {
     }
 
     @PostMapping("/add")
+    @Operation(summary = "添加用户", description = "添加用户信息")
     @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
     public BaseResponse<Long> addUser(@RequestBody UserAddRequest userAddRequest) {
         if (userAddRequest == null) {
@@ -128,6 +135,7 @@ public class UserController {
     }
 
     @PostMapping("/delete")
+    @Operation(summary = "删除用户", description = "删除用户信息")
     @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
     public BaseResponse<Boolean> deleteUser(@RequestBody DeleteRequest deleteRequest) {
         if (deleteRequest == null || deleteRequest.getId() <= 0) {
@@ -138,6 +146,7 @@ public class UserController {
     }
 
     @PostMapping("/update")
+    @Operation(summary = "更新用户", description = "更新用户信息")
     @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
     public BaseResponse<Boolean> updateUser(@RequestBody UserUpdateRequest updateRequest) {
         if (updateRequest == null || updateRequest.getId() <= 0) {
@@ -151,6 +160,7 @@ public class UserController {
     }
 
     @GetMapping("/get")
+    @Operation(summary = "获取用户", description = "获取用户信息")
     @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
     public BaseResponse<User> getUserById(long id) {
         if (id <= 0) {
@@ -162,6 +172,7 @@ public class UserController {
     }
 
     @GetMapping("get/vo")
+    @Operation(summary = "获取用户VO", description = "获取用户VO信息")
     public BaseResponse<UserVO> getUserVOById(long id) {
         BaseResponse<User> userResponse = getUserById(id);
         User user = userResponse.getData();
@@ -170,6 +181,7 @@ public class UserController {
     }
 
     @PostMapping("list/page")
+    @Operation(summary = "分页获取用户", description = "分页获取用户信息")
     @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
     public BaseResponse<Page<User>> listUserByPage(@RequestBody UserQueryRequest userQueryRequest) {
         if (userQueryRequest == null) {
@@ -184,6 +196,7 @@ public class UserController {
     }
 
     @PostMapping("list/page/vo")
+    @Operation(summary = "分页获取用户VO", description = "分页获取用户VO信息")
     public BaseResponse<Page<UserVO>> listUserVOByPage(@RequestBody UserQueryRequest userQueryRequest) {
         if (userQueryRequest == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
@@ -201,6 +214,7 @@ public class UserController {
     }
 
     @PostMapping("update/my")
+    @Operation(summary = "更新当前用户", description = "更新当前用户信息")
     public BaseResponse<Boolean> updateMyUser(@RequestBody UserUpdateMyRequest userUpdateMyRequest, HttpServletRequest request) {
         if (userUpdateMyRequest == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
