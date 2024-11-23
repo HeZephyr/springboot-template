@@ -70,6 +70,11 @@
             <scope>test</scope> <!-- 指定该依赖仅在测试范围内生效 -->
         </dependency>
 
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+
         <!-- Spring Security 测试支持 -->
         <dependency>
             <groupId>org.springframework.security</groupId>
