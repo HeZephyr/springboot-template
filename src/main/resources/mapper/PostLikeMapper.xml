@@ -17,4 +17,15 @@
         createTime, updateTime
     </sql>
 
+    <select id="listLikePostByPage"
+            resultType="com.zephyr.springboottemplate.model.entity.Post">
+        SELECT p.*
+        FROM post p
+        WHERE EXISTS (
+            SELECT 1
+            FROM post_like pc
+            WHERE pc.userId = #{likeUserId} AND pc.postId = p.id
+        )
+        ${ew.customSqlSegment}
+    </select>
 </mapper>

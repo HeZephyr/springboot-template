@@ -1,6 +1,10 @@
 package com.zephyr.springboottemplate.service;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.zephyr.springboottemplate.model.entity.Post;
 import com.zephyr.springboottemplate.model.entity.PostLike;
 import com.zephyr.springboottemplate.model.entity.User;
 
@@ -29,4 +33,7 @@ public interface PostLikeService extends IService<PostLike> {
      * @return 当前帖子点赞数量
      */
     int doPostLikeInner(long userId, long postId);
+
+    Page<Post> listLikedPostByPage(IPage<Post> page, Wrapper<Post> queryWrapper,
+                                  long likeUserId);
 }

@@ -1,6 +1,9 @@
 package com.zephyr.springboottemplate.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.zephyr.springboottemplate.common.ErrorCode;
 import com.zephyr.springboottemplate.exception.BusinessException;
@@ -81,5 +84,14 @@ public class PostLikeServiceImpl extends ServiceImpl<PostLikeMapper, PostLike> i
                 throw new BusinessException(ErrorCode.SYSTEM_ERROR, "点赞失败");
             }
         }
+    }
+
+    @Override
+    public Page<Post> listLikedPostByPage(IPage<Post> page, Wrapper<Post> queryWrapper,
+                                         long likedUserId) {
+        if (likedUserId <= 0) {
+            return new Page<>();
+        }
+        return baseMapper.listLikedPostByPage(page, queryWrapper, likedUserId);
     }
 }
