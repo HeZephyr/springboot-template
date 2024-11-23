@@ -1,6 +1,8 @@
 package com.zephyr.springboottemplate.controller;
 
 import com.zephyr.springboottemplate.wxmp.constant.WxMpConstant;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -33,6 +35,7 @@ import java.util.Collections;
 @RestController
 @RequestMapping("/wx/mp")
 @Slf4j
+@Tag(name = "微信公众平台接口", description = "提供与微信公众号交互的 API，例如接收消息、校验请求、设置菜单等功能。")
 public class WxMpController {
 
     @Resource
@@ -49,6 +52,7 @@ public class WxMpController {
      * @throws IOException 可能的 I/O 异常
      */
     @PostMapping("/")
+    @Operation(summary = "接收微信消息", description = "接收并处理来自微信服务器的消息，支持明文和加密消息的解析与回复。")
     public void receiveMessage(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html;charset=utf-8");
         response.setStatus(HttpServletResponse.SC_OK);
@@ -109,6 +113,7 @@ public class WxMpController {
      * @return 如果校验成功，返回 echostr；否则返回空字符串
      */
     @GetMapping("/")
+    @Operation(summary = "验证微信请求", description = "接收微信服务器的验证请求，通过验证签名返回 `echostr` 以确保请求合法性。")
     public String check(String timestamp, String nonce, String signature, String echostr) {
         log.info("check");
         if (wxMpService.checkSignature(timestamp, nonce, signature)) {
@@ -129,6 +134,7 @@ public class WxMpController {
      * @throws WxErrorException 如果微信接口调用失败
      */
     @GetMapping("/setMenu")
+    @Operation(summary = "设置微信公众号菜单", description = "通过微信 API 定义自定义菜单，并设置到微信公众号中。")
     public String setMenu() throws WxErrorException {
         log.info("setMenu");
 

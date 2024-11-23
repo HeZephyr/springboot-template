@@ -18,6 +18,30 @@ spring:
     user:
       name: admin       # 自定义用户名
       password: admin123 # 自定义密码
+mybatis-plus:
+  configuration:
+    # 是否将数据库字段的下划线命名风格自动映射为驼峰命名法
+    # 例如：数据库字段 `user_name` 会映射为实体类中的 `userName` 属性
+    # 设置为 false 则不会自动转换，需要手动映射字段
+    map-underscore-to-camel-case: false
+
+    # 配置 MyBatis 日志实现类，用于输出执行的 SQL 和调试信息
+    # 使用 `org.apache.ibatis.logging.stdout.StdOutImpl` 将日志输出到控制台
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+  global-config:
+    db-config:
+      # 全局逻辑删除字段名称（对应实体类中的字段名）
+      # 例如：在实体类中设置 `private Integer isDelete`，MyBatis-Plus 会使用该字段来标记逻辑删除
+      logic-delete-field: isDelete
+
+      # 标记逻辑删除的数据的值（默认为 1 表示已删除）
+      # 当执行删除操作时，SQL 中会自动将逻辑删除字段的值更新为此配置值，而不是直接物理删除记录
+      logic-delete-value: 1
+
+      # 标记逻辑未删除的数据的值（默认为 0 表示未删除）
+      # 当查询时，SQL 会自动过滤出逻辑未删除的数据（即逻辑删除字段的值等于该配置值的数据）
+      logic-not-delete-value: 0
 springdoc:
   api-docs:
     enabled: true  # 启用 OpenAPI 文档生成
@@ -28,3 +52,49 @@ springdoc:
     - group: default  # 分组名称
       paths-to-match: /**  # 匹配的接口路径，注意这里是相对于 context-path 的路径
       packages-to-scan: com.zephyr.springboottemplate.controller  # 扫描的包路径
+wx:
+  # 微信相关配置
+  # 包含微信公众号配置 (mp) 和微信开放平台配置 (open)
+
+  # 微信公众平台配置
+  mp:
+    # 微信公众平台开发者配置的令牌，用于验证消息来源的合法性
+    token: xxx
+
+    # 消息加解密密钥，用于加密和解密消息体内容
+    aesKey: xxx
+
+    # 微信公众平台的 AppID，唯一标识公众号
+    appId: xxx
+
+    # 微信公众平台的 AppSecret，配合 AppID 使用，用于接口调用凭据的获取
+    secret: xxx
+
+    # 配置存储相关设置，指定如何存储微信 SDK 使用的配置数据
+    config-storage:
+      # HTTP 客户端类型，指定 SDK 内部调用接口时使用的 HTTP 客户端
+      http-client-type: HttpClient
+
+      # 配置存储的键前缀，用于在 Redis 等存储中区分不同的键
+      key-prefix: wx
+
+      # Redis 配置，指定存储使用 Redis 时的主机和端口
+      redis:
+        # Redis 服务的主机地址
+        host: 127.0.0.1
+
+        # Redis 服务的端口号
+        port: 6379
+
+      # 配置存储类型，支持以下几种类型：
+      # - Memory：内存存储，仅适用于单节点环境
+      # - Redis：使用 Redis 存储，适用于分布式环境
+      type: Memory
+
+  # 微信开放平台配置
+  open:
+    # 微信开放平台的 AppID，唯一标识应用
+    appId: xxx
+
+    # 微信开放平台的 AppSecret，配合 AppID 使用，用于接口调用凭据的获取
+    appSecret: xxx

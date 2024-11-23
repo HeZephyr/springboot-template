@@ -6,6 +6,7 @@ import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.api.impl.WxMpServiceImpl;
 import me.chanjar.weixin.mp.config.impl.WxMpDefaultConfigImpl;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -38,6 +39,7 @@ public class WxOpenConfig {
      *
      * @return 初始化后的 WxMpService 实例
      */
+    @Bean
     public WxMpService getWxMpService() {
         // 如果服务实例已经初始化，直接返回
         if (wxMpService != null) {

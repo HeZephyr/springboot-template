@@ -11,88 +11,74 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.5</version>
-        <relativePath/> <!-- 从仓库中查找父 POM -->
+        <version>3.3.5</version> <!-- 指定 Spring Boot 的版本 -->
+        <relativePath/> <!-- 从远程仓库中查找父 POM，不从本地继承 -->
     </parent>
 
     <!-- 项目基本信息 -->
-    <groupId>com.zephyr</groupId> <!-- 项目组 ID -->
-    <artifactId>springboot-template</artifactId> <!-- 项目 Artifact ID -->
-    <version>0.0.1-SNAPSHOT</version> <!-- 项目版本号 -->
+    <groupId>com.zephyr</groupId> <!-- 项目组 ID，用于唯一标识项目 -->
+    <artifactId>springboot-template</artifactId> <!-- 项目的 Artifact ID -->
+    <version>0.0.1-SNAPSHOT</version> <!-- 项目当前版本，SNAPSHOT 表示开发中版本 -->
     <name>springboot-template</name> <!-- 项目名称 -->
     <description>springboot-template</description> <!-- 项目描述 -->
 
-    <!-- 项目元数据（可选） -->
-    <url/> <!-- 项目 URL -->
-    <licenses>
-        <license/>
-    </licenses>
-    <developers>
-        <developer/>
-    </developers>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
-
-    <!-- 项目属性配置 -->
+    <!-- 配置项目的属性 -->
     <properties>
-        <java.version>17</java.version> <!-- Java版本，指定项目使用的Java版本 -->
+        <java.version>17</java.version> <!-- 指定使用的 Java 版本 -->
     </properties>
 
-    <!-- 项目依赖 -->
+    <!-- 定义项目的依赖 -->
     <dependencies>
-        <!-- Spring Boot Web Starter，用于构建 Web 应用程序 -->
+        <!-- Spring Boot Web Starter：构建 Web 应用的基础依赖 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Spring Boot Security Starter，用于应用的安全管理 -->
+        <!-- Spring Boot Security Starter：用于管理安全认证和授权 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-        <!-- Lombok，简化 Java 类的开发（如生成 getter、setter 方法） -->
+        <!-- Lombok：简化 Java 类开发，如自动生成 Getter/Setter、构造器等 -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <optional>true</optional> <!-- 将 Lombok 标记为可选依赖，不会被其他项目继承 -->
+            <optional>true</optional> <!-- Lombok 不参与运行时，只在编译时使用 -->
         </dependency>
 
-        <!-- Spring Boot 测试 Starter，提供 JUnit 和 Mock 等测试工具 -->
+        <!-- Spring Boot 测试 Starter：用于测试 Spring Boot 应用 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope> <!-- 指定该依赖仅在测试范围内生效 -->
+            <scope>test</scope> <!-- 限定该依赖仅用于测试 -->
         </dependency>
 
+        <!-- Spring Boot AOP Starter：支持面向切面编程 (Aspect-Oriented Programming) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
 
-        <!-- Spring Security 测试支持 -->
+        <!-- Spring Security 测试 Starter：用于测试安全模块 -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-test</artifactId>
-            <scope>test</scope> <!-- 仅在测试时使用 -->
+            <scope>test</scope> <!-- 仅用于测试范围 -->
         </dependency>
 
-        <!-- Spring Boot JDBC Starter，用于数据库连接管理 -->
+        <!-- Spring Boot JDBC Starter：提供数据库连接管理 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
 
-        <!-- MySQL 连接驱动，用于连接 MySQL 数据库 -->
+        <!-- MySQL 驱动，用于连接 MySQL 数据库 -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope> <!-- 运行时加载驱动，减少打包体积 -->
+            <scope>runtime</scope> <!-- 在运行时加载，减少编译时依赖 -->
             <version>8.0.33</version>
         </dependency>
 
@@ -103,32 +89,34 @@
             <version>3.5.5</version>
         </dependency>
 
-        <!-- MyBatis-Plus Spring Boot Starter，提供MyBatis-Plus核心功能和与Spring Boot的集成支持 -->
+        <!-- MyBatis-Plus 与 Spring Boot 集成 Starter -->
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
             <version>3.5.5</version>
         </dependency>
 
+        <!-- Hutool 工具包：提供便捷的 Java 工具类 -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
             <version>5.8.21</version>
         </dependency>
 
+        <!-- 微信 Java SDK，用于微信公众号开发 -->
         <dependency>
             <groupId>com.github.binarywang</groupId>
             <artifactId>wx-java-mp-spring-boot-starter</artifactId>
             <version>4.4.0</version>
         </dependency>
 
-        <!-- Spring Boot Data Elasticsearch Starter，用于集成 Elasticsearch 搜索引擎 -->
+        <!-- Spring Boot Data Elasticsearch Starter：集成 Elasticsearch 搜索引擎 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
         </dependency>
 
-        <!-- SpringDoc OpenAPI 3 -->
+        <!-- SpringDoc OpenAPI 3：生成 RESTful API 的在线文档 -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
@@ -136,18 +124,18 @@
         </dependency>
     </dependencies>
 
-    <!-- 构建配置 -->
+    <!-- 配置项目的构建信息 -->
     <build>
         <plugins>
-            <!-- Spring Boot Maven 插件，用于打包 Spring Boot 应用为可执行的 JAR 文件 -->
+            <!-- Spring Boot Maven 插件：打包 Spring Boot 项目为可执行的 JAR -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <!-- 排除 Lombok 依赖，因为 Lombok 仅在编译期需要，不在运行时需要 -->
+                    <!-- 排除 Lombok，避免它在运行时参与 -->
                     <excludes>
                         <exclude>
-                            <groupId>org.project-lombok</groupId>
+                            <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
                         </exclude>
                     </excludes>
