@@ -56,7 +56,7 @@ public class PostLikeController {
 
     @PostMapping("/my/list/page")
     @Operation(summary = "分页获取用户点赞的帖子列表", description = "用户可以分页获取自己点赞过的帖子列表，需登录后操作")
-    public BaseResponse<Page<PostVO>> listMyLikePostByPage(@RequestBody PostQueryRequest postQueryRequest,
+    public BaseResponse<Page<PostVO>> listMyLikedPostByPage(@RequestBody PostQueryRequest postQueryRequest,
                                                            HttpServletRequest request) {
         if (postQueryRequest == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);

@@ -43,5 +43,5 @@ public interface PostCollectionService extends IService<PostCollection> {
      * @param collectionUserId 收藏用户的 ID
      * @return 用户收藏的帖子分页列表
      */
-    Page<Post> postCollectionListByPage(IPage<Post> page, Wrapper<Post> queryWrapper, long collectionUserId);
+    Page<Post> listCollectedPostByPage(IPage<Post> page, Wrapper<Post> queryWrapper, long collectionUserId);
 }

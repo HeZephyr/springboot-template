@@ -87,7 +87,7 @@ public class PostCollectionServiceImpl extends ServiceImpl<PostCollectionMapper,
     }
 
     @Override
-    public Page<Post> postCollectionListByPage(IPage<Post> page, Wrapper<Post> queryWrapper, long collectedUserId) {
+    public Page<Post> listCollectedPostByPage(IPage<Post> page, Wrapper<Post> queryWrapper, long collectedUserId) {
         // 1. 检查用户 ID 合法性
         if (collectedUserId <= 0) {
             return new Page<>();
