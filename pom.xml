@@ -97,6 +97,7 @@
         </dependency>
 
         <!-- Hutool 工具包：提供便捷的 Java 工具类 -->
+        <!-- https://hutool.cn/docs/#/ -->
         <dependency>
             <groupId>cn.hutool</groupId>
             <artifactId>hutool-all</artifactId>
@@ -104,6 +105,7 @@
         </dependency>
 
         <!-- 微信 Java SDK，用于微信公众号开发 -->
+        <!-- https://github.com/binarywang/WxJava -->
         <dependency>
             <groupId>com.github.binarywang</groupId>
             <artifactId>wx-java-mp-spring-boot-starter</artifactId>
@@ -111,16 +113,26 @@
         </dependency>
 
         <!-- Spring Boot Data Elasticsearch Starter：集成 Elasticsearch 搜索引擎 -->
+        <!-- https://docs.spring.io/spring-data/elasticsearch/reference/elasticsearch/template.html -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
         </dependency>
 
         <!-- SpringDoc OpenAPI 3：生成 RESTful API 的在线文档 -->
+        <!-- https://springdoc.org/#properties -->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
             <version>2.2.0</version>
+        </dependency>
+
+        <!-- 腾讯云对象存储 API：用于访问腾讯云 COS 服务 -->
+        <!-- https://cloud.tencent.com/document/product/436 -->
+        <dependency>
+            <groupId>com.qcloud</groupId>
+            <artifactId>cos_api</artifactId>
+            <version>5.6.89</version>
         </dependency>
     </dependencies>
 
