@@ -42,16 +42,17 @@ mybatis-plus:
       # 标记逻辑未删除的数据的值（默认为 0 表示未删除）
       # 当查询时，SQL 会自动过滤出逻辑未删除的数据（即逻辑删除字段的值等于该配置值的数据）
       logic-not-delete-value: 0
-springdoc:
-  api-docs:
-    enabled: true  # 启用 OpenAPI 文档生成
-  swagger-ui:
-    enabled: true  # 启用 Swagger UI 界面
-    path: /swagger-ui.html  # Swagger UI 页面路径
-  group-configs:
-    - group: default  # 分组名称
-      paths-to-match: /**  # 匹配的接口路径，注意这里是相对于 context-path 的路径
-      packages-to-scan: com.zephyr.springboottemplate.controller  # 扫描的包路径
+# 接口文档配置（Knife4j）: /api/doc.html
+knife4j:
+  enable: true
+  openapi:
+    title: "接口文档"
+    version: 1.0
+    group:
+      default:
+        api-rule: package
+        api-rule-resources:
+          - com.zephyr.springboottemplate.controller
 wx:
   # 微信相关配置
   # 包含微信公众号配置 (mp) 和微信开放平台配置 (open)

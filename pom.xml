@@ -119,12 +119,11 @@
             <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
         </dependency>
 
-        <!-- SpringDoc OpenAPI 3：生成 RESTful API 的在线文档 -->
-        <!-- https://springdoc.org/#properties -->
+        <!-- https://doc.xiaominfo.com/docs/quick-start#openapi2 -->
         <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.2.0</version>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
+            <version>4.4.0</version>
         </dependency>
 
         <!-- 腾讯云对象存储 API：用于访问腾讯云 COS 服务 -->
