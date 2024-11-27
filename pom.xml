@@ -35,6 +35,12 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- Spring Boot Freemarker Starter：集成 Freemarker 模板引擎 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+
         <!-- Spring Boot Security Starter：用于管理安全认证和授权 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
