@@ -80,6 +80,17 @@
             <artifactId>spring-boot-starter-jdbc</artifactId>
         </dependency>
 
+        <!-- redis， 集成 Spring Data Redis，支持与 Redis 进行交互 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!-- Spring Session Data Redis：支持将 Session 存储到 Redis 中 -->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+        </dependency>
+
         <!-- MySQL 驱动，用于连接 MySQL 数据库 -->
         <dependency>
             <groupId>mysql</groupId>

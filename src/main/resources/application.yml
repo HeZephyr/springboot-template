@@ -13,11 +13,37 @@ spring:
   profiles:
     # 指定默认的激活环境为 dev（开发环境）
     active: dev
+  # 支持 swagger3
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  # session 配置
+  session:
+    # todo 取消注释开启分布式 session（须先配置 Redis）
+    # store-type: redis
+    # 30 天过期
+    timeout: 2592000
   # 安全配置
   security:
     user:
       name: admin       # 自定义用户名
       password: admin123 # 自定义密码
+
+# Redis 配置
+# todo 需替换配置，然后取消注释
+#  redis:
+#    database: 1
+#    host: localhost
+#    port: 6379
+#    timeout: 5000
+#    password: 123456
+# Elasticsearch 配置
+# todo 需替换配置，然后取消注释
+#  elasticsearch:
+#    uris: http://localhost:9200
+#    username: root
+#    password: 123456
+
 mybatis-plus:
   configuration:
     # 是否将数据库字段的下划线命名风格自动映射为驼峰命名法
